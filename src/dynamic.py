@@ -11,9 +11,9 @@ class DynamicAgent:
         self.start = start
         self.goal = goal
         self.strategy = strategy
+        self.time_step = 0
         self.path = self.plan_path(start)
 
-        # Ensure logs directory exists
         os.makedirs(os.path.dirname(LOG_FILE), exist_ok=True)
         with open(LOG_FILE, "a") as f:
             f.write(
@@ -34,26 +34,30 @@ class DynamicAgent:
     def move(self):
         while self.path:
             current = self.path.pop(0)
-            if not self.grid.is_valid(*current):
-                msg = f"Obstacle detected at {current}. Replanning path..."
+
+            # check validity considering moving obstacles at current time
+            if not self.grid.is_valid(*current, time=self.time_step):
+                msg = f"[t={self.time_step}] Obstacle detected at {current}. Replanning..."
                 print(msg)
                 with open(LOG_FILE, "a") as f:
                     f.write(msg + "\n")
 
                 self.path = self.plan_path(current)
                 if not self.path:
-                    msg = "No path found. Delivery failed!"
+                    msg = f"[t={self.time_step}] No path found. Delivery failed!"
                     print(msg)
                     with open(LOG_FILE, "a") as f:
                         f.write(msg + "\n")
                     return False
             else:
-                msg = f"Moving to {current}"
+                msg = f"[t={self.time_step}] Moving to {current}"
                 print(msg)
                 with open(LOG_FILE, "a") as f:
                     f.write(msg + "\n")
 
-        msg = "Package delivered successfully!"
+            self.time_step += 1  # advance time at each move
+
+        msg = f"[t={self.time_step}] Package delivered successfully!"
         print(msg)
         with open(LOG_FILE, "a") as f:
             f.write(msg + "\n")
