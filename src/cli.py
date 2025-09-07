@@ -1,12 +1,12 @@
 import argparse
 from grid import Grid
-from algorithms import bfs
+from algorithms import bfs, ucs
 
 
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--map", type=str, required=True)
-    parser.add_argument("--algorithm", type=str, choices=["bfs"], required=True)
+    parser.add_argument("--algorithm", type=str, choices=["bfs", "ucs"], required=True)
     args = parser.parse_args()
 
     grid = Grid(args.map)
@@ -21,13 +21,21 @@ def main():
 
     print("Start:", start)
     print("Goal:", goal)
-
+    # BFS
     if args.algorithm == "bfs":
         path = bfs(grid, start, goal)
         if path:
             print("Path found:", path)
         else:
-            print("No path found")
+            print("❌ No path found")
+    # UCS
+    elif args.algorithm == "ucs":
+        path, cost = ucs(grid, start, goal)
+        if path:
+            print("Path found:", path)
+            print("Total cost:", cost)
+        else:
+            print("❌ No path found")
 
 
 if __name__ == "__main__":

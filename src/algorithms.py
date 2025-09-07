@@ -1,6 +1,9 @@
 from collections import deque
 
+import heapq
 
+
+# BFS
 def bfs(grid, start, goal):
     queue = deque([start])
     visited = set([start])
@@ -18,6 +21,35 @@ def bfs(grid, start, goal):
                 parent[(nx, ny)] = (x, y)
                 queue.append((nx, ny))
     return None
+
+
+# UCS
+def ucs(grid, start, goal):
+    pq = [(0, start)]  # (cost, node)
+    visited = set()
+    parent = {start: None}
+    cost_so_far = {start: 0}
+
+    while pq:
+        cost, (x, y) = heapq.heappop(pq)
+
+        if (x, y) == goal:
+            return reconstruct_path(parent, goal), cost
+
+        if (x, y) in visited:
+            continue
+        visited.add((x, y))
+
+        for dx, dy in [(1, 0), (-1, 0), (0, 1), (0, -1)]:
+            nx, ny = x + dx, y + dy
+            if grid.is_valid(nx, ny):
+                new_cost = cost_so_far[(x, y)] + 1  # cost = 1 for now
+                if (nx, ny) not in cost_so_far or new_cost < cost_so_far[(nx, ny)]:
+                    cost_so_far[(nx, ny)] = new_cost
+                    parent[(nx, ny)] = (x, y)
+                    heapq.heappush(pq, (new_cost, (nx, ny)))
+
+    return None, float("inf")
 
 
 def reconstruct_path(parent, goal):
