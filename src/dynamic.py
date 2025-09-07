@@ -21,6 +21,7 @@ class DynamicAgent:
             )
 
     def plan_path(self, start):
+        """Compute a path from `start` to goal using the chosen strategy"""
         if self.strategy == "a_star":
             path, _ = a_star(self.grid, start, self.goal)
         elif self.strategy == "hill_climbing":
@@ -32,10 +33,11 @@ class DynamicAgent:
         return path
 
     def move(self):
+        """Execute moves step by step, replanning if obstacles appear"""
         while self.path:
             current = self.path.pop(0)
 
-            # check validity considering moving obstacles at current time
+            # Check if current cell is still valid (dynamic obstacles)
             if not self.grid.is_valid(*current, time=self.time_step):
                 msg = f"[t={self.time_step}] Obstacle detected at {current}. Replanning..."
                 print(msg)
@@ -55,7 +57,7 @@ class DynamicAgent:
                 with open(LOG_FILE, "a") as f:
                     f.write(msg + "\n")
 
-            self.time_step += 1  # advance time at each move
+            self.time_step += 1  # advance time
 
         msg = f"[t={self.time_step}] Package delivered successfully!"
         print(msg)
