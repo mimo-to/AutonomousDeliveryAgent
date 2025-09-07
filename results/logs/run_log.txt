@@ -1,0 +1,51 @@
+
+--- New Run [2025-09-07 19:03:26.325704] | Strategy: hill_climbing ---
+Moving to (0, 0)
+Moving to (1, 0)
+Moving to (2, 0)
+Moving to (3, 0)
+Moving to (4, 0)
+Moving to (4, 1)
+Moving to (4, 2)
+Moving to (4, 3)
+Moving to (4, 4)
+Package delivered successfully!
+
+--- New Run [2025-09-07 19:03:51.161264] | Strategy: simulated_annealing ---
+Moving to (0, 0)
+Moving to (1, 0)
+Moving to (0, 0)
+Moving to (0, 1)
+Moving to (0, 0)
+Moving to (0, 1)
+Moving to (0, 0)
+Moving to (1, 0)
+Moving to (0, 0)
+Moving to (1, 0)
+Moving to (0, 0)
+Moving to (1, 0)
+Moving to (0, 0)
+Moving to (1, 0)
+Moving to (2, 0)
+Moving to (1, 0)
+Moving to (0, 0)
+Moving to (0, 1)
+Moving to (0, 2)
+Moving to (0, 1)
+Moving to (0, 2)
+Moving to (0, 1)
+Moving to (0, 2)
+Moving to (0, 3)
+Package delivered successfully!
+
+--- New Run [2025-09-07 19:04:50.645506] | Strategy: hill_climbing ---
+Moving to (0, 0)
+Moving to (1, 0)
+Moving to (2, 0)
+Moving to (3, 0)
+Moving to (4, 0)
+Moving to (4, 1)
+Moving to (4, 2)
+Moving to (4, 3)
+Moving to (4, 4)
+Package delivered successfully!

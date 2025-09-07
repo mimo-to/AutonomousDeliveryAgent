@@ -1,8 +1,10 @@
 from collections import deque
 import heapq
+import math
+import random
 
 
-# BFS
+# ---------- BFS ----------
 def bfs(grid, start, goal):
     queue = deque([start])
     visited = set([start])
@@ -22,7 +24,7 @@ def bfs(grid, start, goal):
     return None
 
 
-# UCS
+# ---------- UCS ----------
 def ucs(grid, start, goal):
     pq = [(0, start)]
     visited = set()
@@ -31,7 +33,6 @@ def ucs(grid, start, goal):
 
     while pq:
         cost, (x, y) = heapq.heappop(pq)
-
         if (x, y) == goal:
             return reconstruct_path(parent, goal), cost
 
@@ -51,7 +52,7 @@ def ucs(grid, start, goal):
     return None, float("inf")
 
 
-# A* with Manhattan heuristic
+# ---------- A* ----------
 def a_star(grid, start, goal):
     pq = [(0, start)]
     cost_so_far = {start: 0}
@@ -60,7 +61,6 @@ def a_star(grid, start, goal):
 
     while pq:
         f_score, (x, y) = heapq.heappop(pq)
-
         if (x, y) == goal:
             return reconstruct_path(parent, goal), cost_so_far[(x, y)]
 
@@ -82,6 +82,72 @@ def a_star(grid, start, goal):
     return None, float("inf")
 
 
+# ---------- Local Search: Hill Climbing ----------
+def hill_climbing(grid, start, goal, max_restarts=10):
+    best_path = None
+    for _ in range(max_restarts):
+        current = start
+        path = [current]
+        visited = set([current])
+
+        while current != goal:
+            neighbors = [
+                (current[0] + dx, current[1] + dy)
+                for dx, dy in [(1, 0), (-1, 0), (0, 1), (0, -1)]
+                if grid.is_valid(current[0] + dx, current[1] + dy)
+            ]
+            neighbors = [n for n in neighbors if n not in visited]
+            if not neighbors:
+                break
+
+            current = min(
+                neighbors, key=lambda x: abs(x[0] - goal[0]) + abs(x[1] - goal[1])
+            )
+            path.append(current)
+            visited.add(current)
+
+        if path[-1] == goal:
+            if best_path is None or len(path) < len(best_path):
+                best_path = path
+    return best_path
+
+
+# ---------- Local Search: Simulated Annealing ----------
+def simulated_annealing(
+    grid, start, goal, max_iterations=500, temperature=100.0, cooling_rate=0.99
+):
+    current = start
+    path = [current]
+
+    def heuristic(a, b):
+        return abs(a[0] - b[0]) + abs(a[1] - b[1])
+
+    for _ in range(max_iterations):
+        if current == goal:
+            return path
+
+        neighbors = [
+            (current[0] + dx, current[1] + dy)
+            for dx, dy in [(1, 0), (-1, 0), (0, 1), (0, -1)]
+            if grid.is_valid(current[0] + dx, current[1] + dy)
+        ]
+
+        if not neighbors:
+            break
+
+        next_node = random.choice(neighbors)
+        delta_e = heuristic(current, goal) - heuristic(next_node, goal)
+
+        if delta_e > 0 or math.exp(delta_e / temperature) > random.random():
+            current = next_node
+            path.append(current)
+
+        temperature *= cooling_rate
+
+    return path if path[-1] == goal else None
+
+
+# ---------- Helper ----------
 def reconstruct_path(parent, goal):
     path = []
     node = goal
