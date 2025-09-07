@@ -336,3 +336,201 @@ Dynamic replanning was enabled.
 --- Run [2025-09-07 22:58:42.703478] | Algo: hill_climbing | Map: maps/dynamic.txt ---
 No path found
 Dynamic replanning was enabled.
+
+--- New Run [2025-09-07 23:14:47.264642] | Strategy: hill_climbing ---
+
+--- New Run [2025-09-07 23:21:24.050796] | Strategy: hill_climbing ---
+
+--- New Run [2025-09-07 23:25:06.222058] | Strategy: hill_climbing ---
+[t=0] Moving to (0, 0)
+[t=1] Moving to (1, 0)
+[t=2] Moving to (2, 0)
+[t=3] Moving to (3, 0)
+[t=4] Moving to (4, 0)
+[t=5] Moving to (4, 1)
+[t=6] Moving to (4, 2)
+[t=7] Moving to (4, 3)
+[t=8] Moving to (4, 4)
+[t=9] Package delivered successfully!
+
+--- Run [2025-09-07 23:25:06.228047] | Algo: hill_climbing | Map: maps/dynamic.txt ---
+No path found
+Dynamic replanning was enabled.
+
+--- New Run [2025-09-07 23:25:14.901163] | Strategy: hill_climbing ---
+[t=0] Moving to (0, 0)
+[t=1] Moving to (1, 0)
+[t=2] Moving to (2, 0)
+[t=3] Moving to (3, 0)
+[t=4] Moving to (4, 0)
+[t=5] Moving to (4, 1)
+[t=6] Moving to (4, 2)
+[t=7] Moving to (4, 3)
+[t=8] Moving to (4, 4)
+[t=9] Package delivered successfully!
+
+--- Run [2025-09-07 23:25:14.907160] | Algo: hill_climbing | Map: maps/dynamic.txt ---
+No path found
+Dynamic replanning was enabled.
+
+--- Run [2025-09-07 23:26:12.826419] | Algo: a_star | Map: maps/large.txt ---
+Path length: 21
+Path: [(0, 0), (0, 1), (0, 2), (0, 3), (0, 4), (0, 5), (0, 6), (0, 7), (0, 8), (0, 9), (0, 10), (0, 11), (1, 11), (2, 11), (3, 11), (4, 11), (5, 11), (6, 11), (7, 11), (8, 11), (9, 11)]
+Total cost: 20
+Runtime: 0.000559 seconds
+
+--- Run [2025-09-07 23:26:24.932309] | Algo: ucs | Map: maps/medium.txt ---
+Path length: 11
+Path: [(0, 0), (1, 0), (2, 0), (2, 1), (3, 1), (3, 2), (3, 3), (2, 3), (2, 4), (2, 5), (2, 6)]
+Total cost: 10
+Runtime: 0.000137 seconds
+
+--- Run [2025-09-07 23:26:35.063814] | Algo: bfs | Map: maps/small.txt ---
+Path length: 4
+Path: [(0, 0), (0, 1), (0, 2), (0, 3)]
+Total cost: 3
+Runtime: 0.000051 seconds
+
+--- Run [2025-09-07 23:34:58.771321] | Algo: bfs | Map: maps/medium.txt ---
+Path length: 11
+Path: [(0, 0), (1, 0), (2, 0), (3, 0), (3, 1), (3, 2), (3, 3), (2, 3), (2, 4), (2, 5), (2, 6)]
+Total cost: 10
+Runtime: 0.000108 seconds
+
+--- Run [2025-09-07 23:35:11.530884] | Algo: bfs | Map: maps/large.txt ---
+Path length: 21
+Path: [(0, 0), (1, 0), (2, 0), (3, 0), (4, 0), (5, 0), (6, 0), (7, 0), (8, 0), (9, 0), (9, 1), (9, 2), (9, 3), (9, 4), (9, 5), (9, 6), (9, 7), (9, 8), (9, 9), (9, 10), (9, 11)]
+Total cost: 20
+Runtime: 0.000323 seconds
+
+--- Run [2025-09-07 23:35:35.852505] | Algo: ucs | Map: maps/small.txt ---
+Path length: 4
+Path: [(0, 0), (0, 1), (0, 2), (0, 3)]
+Total cost: 3
+Runtime: 0.000076 seconds
+
+--- Run [2025-09-07 23:35:53.137157] | Algo: ucs | Map: maps/large.txt ---
+Path length: 21
+Path: [(0, 0), (0, 1), (0, 2), (0, 3), (0, 4), (0, 5), (0, 6), (0, 7), (0, 8), (0, 9), (0, 10), (0, 11), (1, 11), (2, 11), (3, 11), (4, 11), (5, 11), (6, 11), (7, 11), (8, 11), (9, 11)]
+Total cost: 20
+Runtime: 0.000546 seconds
+
+--- Run [2025-09-07 23:36:08.720125] | Algo: a_star | Map: maps/small.txt ---
+Path length: 4
+Path: [(0, 0), (0, 1), (0, 2), (0, 3)]
+Total cost: 3
+Runtime: 0.000063 seconds
+
+--- Run [2025-09-07 23:36:27.256516] | Algo: a_star | Map: maps/large.txt ---
+Path length: 21
+Path: [(0, 0), (0, 1), (0, 2), (0, 3), (0, 4), (0, 5), (0, 6), (0, 7), (0, 8), (0, 9), (0, 10), (0, 11), (1, 11), (2, 11), (3, 11), (4, 11), (5, 11), (6, 11), (7, 11), (8, 11), (9, 11)]
+Total cost: 20
+Runtime: 0.000560 seconds
+
+--- Run [2025-09-07 23:36:38.475207] | Algo: a_star | Map: maps/medium.txt ---
+Path length: 11
+Path: [(0, 0), (1, 0), (2, 0), (2, 1), (3, 1), (3, 2), (3, 3), (2, 3), (2, 4), (2, 5), (2, 6)]
+Total cost: 10
+Runtime: 0.000108 seconds
+
+--- New Run [2025-09-07 23:41:05.353023] | Strategy: hill_climbing ---
+[t=0] Moving to (0, 0)
+[t=1] Moving to (1, 0)
+[t=2] Moving to (2, 0)
+[t=3] Moving to (3, 0)
+[t=4] Moving to (4, 0)
+[t=5] Moving to (4, 1)
+[t=6] Moving to (4, 2)
+[t=7] Moving to (4, 3)
+[t=8] Moving to (4, 4)
+[t=9] Package delivered successfully!
+
+--- Run [2025-09-07 23:41:05.360014] | Algo: hill_climbing | Map: maps/dynamic.txt ---
+No path found
+Dynamic replanning was enabled.
+
+--- New Run [2025-09-07 23:41:21.627225] | Strategy: simulated_annealing ---
+[t=0] Moving to (0, 0)
+[t=1] Moving to (1, 0)
+[t=2] Moving to (2, 0)
+[t=3] Moving to (1, 0)
+[t=4] Moving to (0, 0)
+[t=5] Moving to (0, 1)
+[t=6] Moving to (0, 2)
+[t=7] Moving to (0, 3)
+[t=8] Moving to (1, 3)
+[t=9] Moving to (2, 3)
+[t=10] Moving to (1, 3)
+[t=11] Moving to (2, 3)
+[t=12] Moving to (3, 3)
+[t=13] Moving to (2, 3)
+[t=14] Moving to (2, 4)
+[t=15] Moving to (1, 4)
+[t=16] Moving to (2, 4)
+[t=17] Moving to (2, 3)
+[t=18] Moving to (2, 4)
+[t=19] Moving to (1, 4)
+[t=20] Moving to (2, 4)
+[t=21] Moving to (2, 3)
+[t=22] Moving to (2, 4)
+[t=23] Moving to (2, 3)
+[t=24] Moving to (1, 3)
+[t=25] Moving to (1, 4)
+[t=26] Moving to (0, 4)
+[t=27] Moving to (0, 3)
+[t=28] Moving to (0, 4)
+[t=29] Moving to (0, 3)
+[t=30] Moving to (0, 4)
+[t=31] Moving to (1, 4)
+[t=32] Moving to (2, 4)
+[t=33] Moving to (2, 3)
+[t=34] Moving to (1, 3)
+[t=35] Moving to (2, 3)
+[t=36] Moving to (2, 4)
+[t=37] Moving to (1, 4)
+[t=38] Moving to (2, 4)
+[t=39] Moving to (2, 3)
+[t=40] Moving to (1, 3)
+[t=41] Moving to (2, 3)
+[t=42] Moving to (1, 3)
+[t=43] Moving to (2, 3)
+[t=44] Moving to (1, 3)
+[t=45] Moving to (1, 4)
+[t=46] Moving to (0, 4)
+[t=47] Moving to (0, 3)
+[t=48] Moving to (0, 4)
+[t=49] Moving to (1, 4)
+[t=50] Moving to (1, 3)
+[t=51] Moving to (1, 4)
+[t=52] Moving to (2, 4)
+[t=53] Moving to (1, 4)
+[t=54] Moving to (0, 4)
+[t=55] Moving to (0, 3)
+[t=56] Moving to (1, 3)
+[t=57] Moving to (0, 3)
+[t=58] Moving to (1, 3)
+[t=59] Moving to (2, 3)
+[t=60] Moving to (1, 3)
+[t=61] Moving to (1, 4)
+[t=62] Moving to (1, 3)
+[t=63] Moving to (2, 3)
+[t=64] Moving to (3, 3)
+[t=65] Moving to (4, 3)
+[t=66] Moving to (4, 2)
+[t=67] Moving to (4, 1)
+[t=68] Moving to (4, 0)
+[t=69] Moving to (3, 0)
+[t=70] Moving to (2, 0)
+[t=71] Moving to (2, 1)
+[t=72] Moving to (2, 0)
+[t=73] Moving to (3, 0)
+[t=74] Moving to (3, 1)
+[t=75] Moving to (3, 2)
+[t=76] Moving to (4, 2)
+[t=77] Moving to (4, 3)
+[t=78] Moving to (4, 4)
+[t=79] Package delivered successfully!
+
+--- Run [2025-09-07 23:41:21.673845] | Algo: simulated_annealing | Map: maps/dynamic.txt ---
+No path found
+Dynamic replanning was enabled.

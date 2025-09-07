@@ -5,8 +5,10 @@ from datetime import datetime
 from src.grid import Grid
 from src.algorithms import bfs, ucs, a_star
 from src.dynamic import DynamicAgent
+import csv
 
 LOG_FILE = os.path.join("results", "logs", "run_log.txt")
+CSV_FILE = os.path.join("results", "plots", "metrics.csv")
 
 
 def ensure_log_dir():
@@ -33,6 +35,27 @@ def log_run(algorithm, mapfile, path=None, cost=None, runtime=None, dynamic=Fals
             f.write("Dynamic replanning was enabled.\n")
 
 
+def log_metrics(algorithm, mapfile, path, cost, nodes, runtime):
+    os.makedirs(os.path.dirname(CSV_FILE), exist_ok=True)
+    file_exists = os.path.isfile(CSV_FILE)
+    with open(CSV_FILE, "a", newline="") as f:
+        writer = csv.writer(f)
+        if not file_exists:
+            writer.writerow(
+                ["Algorithm", "Map", "PathLength", "Cost", "NodesExpanded", "Runtime"]
+            )
+        writer.writerow(
+            [
+                algorithm,
+                os.path.basename(mapfile),
+                len(path) if path else 0,
+                cost if cost is not None else "NA",
+                nodes if nodes is not None else "NA",
+                f"{runtime:.6f}",
+            ]
+        )
+
+
 def main():
     parser = argparse.ArgumentParser(
         description="Autonomous Delivery Agent: Run pathfinding algorithms on a grid."
@@ -57,41 +80,37 @@ def main():
     # --- Static algorithms ---
     if args.algorithm == "bfs":
         t0 = time.perf_counter()
-        path = bfs(grid, start, goal)
+        path, cost, nodes = bfs(grid, start, goal)
         runtime = time.perf_counter() - t0
-        if path:
-            print("Path found:", path)
-        else:
-            print("No path found")
-        log_run("bfs", args.map, path, runtime=runtime)
+        print("Path:", path if path else "No path")
+        print("Cost:", cost, "Nodes expanded:", nodes, "Runtime:", runtime)
+        log_run("bfs", args.map, path, cost, runtime)
+        log_metrics("bfs", args.map, path, cost, nodes, runtime)
 
     elif args.algorithm == "ucs":
         t0 = time.perf_counter()
-        path, cost = ucs(grid, start, goal)
+        path, cost, nodes = ucs(grid, start, goal)
         runtime = time.perf_counter() - t0
-        if path:
-            print("Path found:", path)
-            print("Total cost:", cost)
-        else:
-            print("No path found")
+        print("Path:", path if path else "No path")
+        print("Cost:", cost, "Nodes expanded:", nodes, "Runtime:", runtime)
         log_run("ucs", args.map, path, cost, runtime)
+        log_metrics("ucs", args.map, path, cost, nodes, runtime)
 
     elif args.algorithm == "a_star":
         t0 = time.perf_counter()
-        path, cost = a_star(grid, start, goal)
+        path, cost, nodes = a_star(grid, start, goal)
         runtime = time.perf_counter() - t0
-        if path:
-            print("Path found:", path)
-            print("Total cost:", cost)
-        else:
-            print("No path found")
+        print("Path:", path if path else "No path")
+        print("Cost:", cost, "Nodes expanded:", nodes, "Runtime:", runtime)
         log_run("a_star", args.map, path, cost, runtime)
+        log_metrics("a_star", args.map, path, cost, nodes, runtime)
 
     # --- Dynamic algorithms ---
     else:
         agent = DynamicAgent(grid, start, goal, strategy=args.algorithm)
-        success = agent.move()
-        log_run(args.algorithm, args.map, path=agent.path, dynamic=True)
+        agent.move()
+        path = agent.path  # store final path after move
+        log_run(args.algorithm, args.map, path=path, dynamic=True)
 
 
 if __name__ == "__main__":
