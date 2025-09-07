@@ -1,5 +1,4 @@
 from collections import deque
-
 import heapq
 
 
@@ -25,7 +24,7 @@ def bfs(grid, start, goal):
 
 # UCS
 def ucs(grid, start, goal):
-    pq = [(0, start)]  # (cost, node)
+    pq = [(0, start)]
     visited = set()
     parent = {start: None}
     cost_so_far = {start: 0}
@@ -43,11 +42,42 @@ def ucs(grid, start, goal):
         for dx, dy in [(1, 0), (-1, 0), (0, 1), (0, -1)]:
             nx, ny = x + dx, y + dy
             if grid.is_valid(nx, ny):
-                new_cost = cost_so_far[(x, y)] + 1  # cost = 1 for now
+                new_cost = cost_so_far[(x, y)] + grid.get_cost(nx, ny)
                 if (nx, ny) not in cost_so_far or new_cost < cost_so_far[(nx, ny)]:
                     cost_so_far[(nx, ny)] = new_cost
                     parent[(nx, ny)] = (x, y)
                     heapq.heappush(pq, (new_cost, (nx, ny)))
+
+    return None, float("inf")
+
+
+# A* with Manhattan heuristic
+def a_star(grid, start, goal):
+    pq = [(0, start)]
+    cost_so_far = {start: 0}
+    parent = {start: None}
+    visited = set()
+
+    while pq:
+        f_score, (x, y) = heapq.heappop(pq)
+
+        if (x, y) == goal:
+            return reconstruct_path(parent, goal), cost_so_far[(x, y)]
+
+        if (x, y) in visited:
+            continue
+        visited.add((x, y))
+
+        for dx, dy in [(1, 0), (-1, 0), (0, 1), (0, -1)]:
+            nx, ny = x + dx, y + dy
+            if grid.is_valid(nx, ny):
+                new_cost = cost_so_far[(x, y)] + grid.get_cost(nx, ny)
+                if (nx, ny) not in cost_so_far or new_cost < cost_so_far[(nx, ny)]:
+                    cost_so_far[(nx, ny)] = new_cost
+                    parent[(nx, ny)] = (x, y)
+                    h = abs(goal[0] - nx) + abs(goal[1] - ny)
+                    f_score = new_cost + h
+                    heapq.heappush(pq, (f_score, (nx, ny)))
 
     return None, float("inf")
 
