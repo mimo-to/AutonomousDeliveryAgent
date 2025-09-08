@@ -108,9 +108,29 @@ def main():
     # --- Dynamic algorithms ---
     else:
         agent = DynamicAgent(grid, start, goal, strategy=args.algorithm)
-        agent.move()
-        path = agent.path  # store final path after move
-        log_run(args.algorithm, args.map, path=path, dynamic=True)
+        t0 = time.perf_counter()
+        success = agent.move()
+        runtime = time.perf_counter() - t0
+        # After move(), agent.path is consumed; use time_step as an effective path length
+        dynamic_path_length = agent.time_step
+        # Construct a placeholder path of the measured length for CSV logging compatibility
+        placeholder_path = [None] * dynamic_path_length
+        log_run(
+            args.algorithm,
+            args.map,
+            path=placeholder_path if success else None,
+            runtime=runtime,
+            dynamic=True,
+        )
+        # Log limited metrics for dynamic strategies: PathLength and Runtime; Cost/Nodes are not applicable
+        log_metrics(
+            args.algorithm,
+            args.map,
+            placeholder_path if success else None,
+            cost=None,
+            nodes=None,
+            runtime=runtime,
+        )
 
 
 if __name__ == "__main__":

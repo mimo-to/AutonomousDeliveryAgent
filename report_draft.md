@@ -25,6 +25,11 @@ Algorithms implemented:
 - Terrain cost = integer ≥ 1 (default = 1).
 - Agent can move in 4 directions: up, down, left, right.
 
+### Movement Assumptions
+
+- Diagonal movement: Not allowed in this project (4-connected grid). This aligns with the Manhattan heuristic used by A\* and ensures admissibility.
+- Time model: Each move advances time by 1. Dynamic obstacles are evaluated against the current time step.
+
 ---
 
 ## 3. Algorithms
@@ -65,6 +70,12 @@ Algorithms implemented:
   - Nodes expanded
   - Runtime (seconds)
 
+For dynamic strategies (hill climbing, simulated annealing), we record:
+
+- Path length (measured by time steps taken)
+- Runtime (seconds)
+- Cost and nodes expanded are not applicable and logged as NA in `metrics.csv`.
+
 ---
 
 ## 5. Results
@@ -102,11 +113,18 @@ Algorithms implemented:
 
 ## 6. Analysis
 
-- **BFS**: Guarantees shortest path in steps, but ignores cost.
-- **UCS**: Optimal cost, but expands more nodes than A\*.
-- **A\***: Best balance — fewer nodes expanded, low runtime, cost-optimal.
-- **Hill Climbing**: Reached the goal quickly in this case, but risky without replanning.
-- **Simulated Annealing**: Much longer wandering path, but still succeeded — shows robustness in escaping local minima.
+### When each method performs better (based on experiments)
+
+- **BFS (uninformed)**: Best when all moves have uniform cost and the optimal path is short in steps. It is predictable but can expand many nodes on larger maps because it ignores costs.
+- **UCS (uninformed but cost-sensitive)**: Best when terrain costs vary significantly and the cheapest route is not the shortest in steps. It may expand more nodes than A\* due to lack of guidance.
+- **A\* (informed)**: Best overall for static maps with Manhattan distances; expands fewer nodes than UCS while preserving optimality. Benefits grow as map size increases and obstacles create detours.
+- **Hill Climbing (dynamic, local search)**: Performs well when the heuristic landscape is smooth and obstacles are sparse or short-lived. However, it can get stuck without replanning; dynamic replanning mitigates this but may still fail in mazes.
+- **Simulated Annealing (dynamic, probabilistic)**: More robust than hill climbing in rugged landscapes with many local minima; tends to incur longer paths/runtimes but succeeds more often when obstacles force detours.
+
+### Why these trends occur
+
+- Heuristic guidance in A\* prunes the search more aggressively than UCS, especially with Manhattan distance on 4-connected grids.
+- Local search methods trade optimality for adaptability; dynamic replanning lets them recover from newly blocked cells, but lack of global optimality yields longer paths.
 
 ---
 
@@ -115,8 +133,8 @@ Algorithms implemented:
 - For **static maps**, A\* is the most efficient.
 - For **dynamic maps**, local search with replanning (Hill Climbing, Simulated Annealing) is essential.
 - Future work:
-  - Add runtime measurement for dynamic algorithms.
+  - Add richer dynamic metrics (e.g., number of replans, detour length).
   - Visualization of pathfinding and replanning.
-  - Extend movement to diagonals.
+  - Extend movement to diagonals and update heuristics accordingly.
 
 ---

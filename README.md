@@ -73,7 +73,11 @@ Metrics are logged to:
 
 ### Dynamic agent (replanning)
 
-Dynamic runs use the agent and do not write to `metrics.csv` (they log detailed steps to `run_log.txt`).
+Dynamic runs use the agent, log detailed steps to `run_log.txt`, and also append limited metrics to `metrics.csv`:
+
+- PathLength: measured by time steps taken
+- Runtime: total time of the dynamic run
+- Cost and NodesExpanded are not applicable and recorded as NA
 
 - Hill Climbing
 
