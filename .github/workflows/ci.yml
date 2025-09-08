@@ -1,0 +1,40 @@
+name: CI
+
+on:
+    push:
+        branches: [main, master]
+    pull_request:
+
+jobs:
+    build-test-plot:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v4
+
+            - name: Set up Python
+              uses: actions/setup-python@v5
+              with:
+                  python-version: "3.11"
+
+            - name: Install dependencies
+              run: |
+                  python -m pip install --upgrade pip
+                  pip install -r requirements.txt
+
+            - name: Run CLI on sample maps
+              run: |
+                  python -m src.cli --map maps/small.txt --algorithm bfs
+                  python -m src.cli --map maps/medium.txt --algorithm ucs
+
+            - name: Generate plots
+              run: |
+                  python -m src.plot_results
+
+            - name: Upload plot artifacts
+              uses: actions/upload-artifact@v4
+              with:
+                  name: plots
+                  path: |
+                      results/plots/*.png

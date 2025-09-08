@@ -23,7 +23,7 @@ class DynamicAgent:
     def plan_path(self, start):
         """Compute a path from `start` to goal using the chosen strategy"""
         if self.strategy == "a_star":
-            path, _ = a_star(self.grid, start, self.goal)
+            path, _, _ = a_star(self.grid, start, self.goal)
         elif self.strategy == "hill_climbing":
             path = hill_climbing(self.grid, start, self.goal)
         elif self.strategy == "simulated_annealing":
