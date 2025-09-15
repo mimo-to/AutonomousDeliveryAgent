@@ -17,3 +17,5 @@ simulated_annealing,dynamic.txt,61,NA,NA,0.035337
 simulated_annealing,dynamic.txt,49,NA,NA,0.026172
 bfs,small.txt,4,3,7,0.000054
 a_star,large.txt,21,20,89,0.000558
+a_star,large.txt,21,20,89,0.000642
+simulated_annealing,dynamic.txt,207,NA,NA,0.111705
