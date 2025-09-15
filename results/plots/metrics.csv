@@ -20,3 +20,4 @@ a_star,large.txt,21,20,89,0.000558
 a_star,large.txt,21,20,89,0.000642
 simulated_annealing,dynamic.txt,207,NA,NA,0.111705
 simulated_annealing,dynamic.txt,99,NA,NA,0.065873
+simulated_annealing,dynamic.txt,179,NA,NA,0.106277
