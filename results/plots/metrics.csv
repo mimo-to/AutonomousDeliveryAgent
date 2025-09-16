@@ -30,3 +30,4 @@ simulated_annealing,dynamic.txt,93,NA,NA,0.055162
 simulated_annealing,dynamic.txt,245,NA,NA,0.138243
 simulated_annealing,dynamic.txt,35,NA,NA,0.017788
 hill_climbing,dynamic.txt,9,NA,NA,0.006545
+simulated_annealing,dynamic.txt,255,NA,NA,0.173917
