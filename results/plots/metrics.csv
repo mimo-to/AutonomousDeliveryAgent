@@ -32,3 +32,4 @@ simulated_annealing,dynamic.txt,35,NA,NA,0.017788
 hill_climbing,dynamic.txt,9,NA,NA,0.006545
 simulated_annealing,dynamic.txt,255,NA,NA,0.173917
 a_star,large.txt,21,20,89,0.000570
+bfs,small.txt,4,3,7,0.000060
