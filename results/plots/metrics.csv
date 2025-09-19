@@ -35,3 +35,4 @@ a_star,large.txt,21,20,89,0.000570
 bfs,small.txt,4,3,7,0.000060
 ucs,medium.txt,11,10,20,0.000129
 a_star,large.txt,21,20,89,0.000569
+hill_climbing,dynamic.txt,9,NA,NA,0.004000
