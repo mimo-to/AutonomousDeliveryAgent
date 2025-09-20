@@ -3580,3 +3580,9 @@ Path length: 103
 Path: [None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None]
 Runtime: 0.054925 seconds
 Dynamic replanning was enabled.
+
+--- Run [2025-09-20 18:46:57.753986] | Algo: bfs | Map: maps/small.txt ---
+Path length: 4
+Path: [(0, 0), (0, 1), (0, 2), (0, 3)]
+Total cost: 3
+Runtime: 0.000049 seconds
