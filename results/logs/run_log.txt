@@ -3678,3 +3678,59 @@ Path length: 9
 Path: [None, None, None, None, None, None, None, None, None]
 Runtime: 0.006160 seconds
 Dynamic replanning was enabled.
+
+--- New Run [2025-09-26 23:37:37.251702] | Strategy: simulated_annealing ---
+[t=0] Moving to (0, 0)
+[t=1] Moving to (0, 1)
+[t=2] Moving to (0, 0)
+[t=3] Moving to (1, 0)
+[t=4] Moving to (2, 0)
+[t=5] Moving to (2, 1)
+[t=6] Moving to (2, 0)
+[t=7] Moving to (3, 0)
+[t=8] Moving to (2, 0)
+[t=9] Moving to (3, 0)
+[t=10] Moving to (4, 0)
+[t=11] Moving to (3, 0)
+[t=12] Moving to (2, 0)
+[t=13] Moving to (2, 1)
+[t=14] Moving to (3, 1)
+[t=15] Moving to (3, 0)
+[t=16] Moving to (3, 1)
+[t=17] Moving to (2, 1)
+[t=18] Moving to (3, 1)
+[t=19] Moving to (3, 0)
+[t=20] Moving to (2, 0)
+[t=21] Moving to (3, 0)
+[t=22] Moving to (4, 0)
+[t=23] Moving to (4, 1)
+[t=24] Moving to (4, 2)
+[t=25] Moving to (3, 2)
+[t=26] Moving to (3, 1)
+[t=27] Moving to (4, 1)
+[t=28] Moving to (3, 1)
+[t=29] Moving to (2, 1)
+[t=30] Moving to (3, 1)
+[t=31] Moving to (3, 0)
+[t=32] Moving to (3, 1)
+[t=33] Moving to (3, 0)
+[t=34] Moving to (4, 0)
+[t=35] Moving to (4, 1)
+[t=36] Moving to (5, 1)
+[t=37] Moving to (5, 2)
+[t=38] Moving to (4, 2)
+[t=39] Moving to (5, 2)
+[t=40] Moving to (5, 3)
+[t=41] Moving to (4, 3)
+[t=42] Moving to (5, 3)
+[t=43] Moving to (6, 3)
+[t=44] Moving to (5, 3)
+[t=45] Moving to (5, 4)
+[t=46] Moving to (4, 4)
+[t=47] Package delivered successfully!
+
+--- Run [2025-09-26 23:37:37.279595] | Algo: simulated_annealing | Map: maps/dynamic.txt ---
+Path length: 47
+Path: [None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None]
+Runtime: 0.027152 seconds
+Dynamic replanning was enabled.
