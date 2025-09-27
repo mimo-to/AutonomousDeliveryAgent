@@ -48,3 +48,4 @@ a_star,large.txt,21,20,89,0.000548
 hill_climbing,dynamic.txt,9,NA,NA,0.006160
 simulated_annealing,dynamic.txt,47,NA,NA,0.027152
 simulated_annealing,dynamic.txt,135,NA,NA,0.088969
+hill_climbing,dynamic.txt,9,NA,NA,0.005071
